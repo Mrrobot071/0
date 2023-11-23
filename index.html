@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="intro.css">
+    <title>Dev'Luc</title>
+</head>
+
+<body>
+    <header class="container">
+        <div class="page-header">
+            <div class="logo">
+                <a href="#">Dev'Luc</a>
+            </div>
+            <input type="checkbox" id="click">
+
+            <label for="click" class="mainicon">
+                <div class="menu">
+                    <i class='bx bx-menu'></i>
+                </div>
+            </label>
+            <ul>
+                <li><a href="#"  class="active" style="--navAni:1">Home</a></li>
+                <li><a href="#" style="--navAni:2">About</a></li>
+                <li><a href="#" style="--navAni:3">Skills</a></li>
+                <li><a href="#" style="--navAni:4">Portfolio</a></li>
+                <li><a href="#" style="--navAni:5">Contact</a></li>
+            </ul>
+            <label class="mode">
+                <input type="checkbox" id="darkModeToggle">
+                <i class='bx bxs-moon'></i>
+            </label>
+        </div>
+    </header>
+
+
+    <section class="container">
+        <div class="main">
+            <div class="detail">
+                <h3>Hi, It's Me</h3>
+                <h1>I'm <span style="color:#f9532d;">Lucas Nathan!</span></h1>
+                <p> Bem-vindo ao Devluc! Aqui você encontrará portfólio de Lucas, um entusiasta da tecnologia. Explore meus projetos, acompanhe minhas redes sociais e descubra mais dos meus trabalhos. Prepare-se para se surpreender!
+             
+                </p>
+                <div class="social">
+                    <a href="#" style="--socialAni:1"><i class='bx bxl-linkedin'></i></a>
+                    <a href="#" style="--socialAni:2"><i class='bx bxl-instagram'></i></a>
+                    <a href="#" style="--socialAni:3"><i class='bx bxl-github'></i></a>
+                    <a href="#" style="--socialAni:4"><i class='bx bxl-facebook-circle'></i></a>
+                </div>
+            </div>
+            <div class="img-sec">
+                <div class="images">
+                    <img src="f-1.png" alt="" class="img-w">
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+        if (isDarkMode) {
+            body.classList.add('dark-mode');
+            darkModeToggle.checked = true;
+        }
+        darkModeToggle.addEventListener('change', () => {
+            if (darkModeToggle.checked) {
+                body.classList.add('dark-mode');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                body.classList.remove('dark-mode');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+    </script>
+    <!-- Botão flutuante para abrir o chat -->
+    <script>
+        // Função para carregar o script do Botpress Web Chat
+        function loadBotpressWebChat() {
+            // Verifique se o script ainda não foi carregado
+            if (!window.botpressWebChat) {
+                const script = document.createElement('script');
+                script.src = "https://cdn.botpress.cloud/webchat/v0/inject.js";
+                script.async = true;
+                script.onload = function () {
+                    // Inicialize o Botpress Web Chat após o carregamento do script
+                    window.botpressWebChat.init({
+                        // Configurações do bot
+                        "composerPlaceholder": "Chat with Jarvis",
+                        "botConversationDescription": "Jarvis-bot.com.br",
+                        "botId": "ac26bdc9-43dd-450b-9ba6-7d75cd6a61e9",
+                        "hostUrl": "https://cdn.botpress.cloud/webchat/v0",
+                        "messagingUrl": "https://messaging.botpress.cloud",
+                        "clientId": "ac26bdc9-43dd-450b-9ba6-7d75cd6a61e9",
+                        "lazySocket": true,
+                        "botName": "Jarvis",
+                        "avatarUrl": "https://w7.pngwing.com/pngs/571/686/png-transparent-jarvis-logo-edwin-jarvis-iron-man-youtube-marvel-cinematic-universe-male-jarvis-ui-comics-superhero-computer-thumbnail.png",
+                        "phoneNumber": "5571992920032",
+                        "termsConditions": "Jarvis-bot.com.br",
+                        "privacyPolicy": "Jarvis-bot.com.br",
+                        "emailAddress": "lnssilvasherlock@gmail.com",
+                        "website": "Jarvis-bot.com.br",
+                        "stylesheet": " ",
+                        "frontendVersion": "v0",
+                        "useSessionStorage": true
+                    });
+                };
+                document.body.appendChild(script);
+            }
+        }
+
+        // Chame a função de carregamento do Botpress Web Chat automaticamente
+        loadBotpressWebChat();
+    </script>
+</body>
+</html>
