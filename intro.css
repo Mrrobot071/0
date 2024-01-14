@@ -130,7 +130,7 @@ li a:hover {
 
 .main p1 {
     line-height: 1.7;
-    font-size: 1.0rem;
+    font-size: 1.2rem;
     opacity: 0;
     animation: topSideAni 1.5s ease forwards;
 }
