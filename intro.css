@@ -127,6 +127,14 @@ li a:hover {
     animation: topSideAni 1.5s ease forwards;
 }
 
+
+.main p1 {
+    line-height: 1.7;
+    font-size: 1.0rem;
+    opacity: 0;
+    animation: topSideAni 1.5s ease forwards;
+}
+
 .social {
     display: flex;
     flex-wrap: wrap;
