@@ -54,40 +54,8 @@
             padding: 10px;
         }
 
-        #skillsSection {
-            display: none;
-        }
-
-        .skillsList {
-            list-style: none;
-            padding: 0;
-        }
-
-        .skillsList li {
-            margin-bottom: 10px;
-        }
-
-        .skillBar {
-            height: 10px;
-        }
-
-        /* Adicione cores específicas conforme sua preferência */
-        .htmlBar { background-color: #993399; }
-        .cssBar { background-color: #3498db; }
-        .jsBar { background-color: #006400; }
-        .pythonBar { background-color: #ffff00; }
-        .reactBar { background-color: #FF0000; }
+        
     </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var skillsBtn = document.getElementById('skillsBtn');
-            var skillsSection = document.getElementById('skillsSection');
-
-            skillsBtn.addEventListener('click', function () {
-                skillsSection.style.display = skillsSection.style.display === 'none' ? 'block' : 'none';
-            });
-        });
-    </script>
     </header>
     <section class="container">
         <div class="main">
@@ -211,6 +179,16 @@ document.addEventListener('DOMContentLoaded', function () {
         var skillsListContainer = document.querySelector('.skillsListContainer');
         skillsListContainer.style.display = skillsListContainer.style.display === 'none' ? 'block' : 'none';
     });
+    </script>
+ <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var skillsBtn = document.getElementById('skillsBtn');
+            var skillsSection = document.getElementById('skillsSection');
+
+            skillsBtn.addEventListener('click', function () {
+                skillsSection.style.display = skillsSection.style.display === 'none' ? 'block' : 'none';
+            });
+        });
     </script>
 </body>
 </html>
