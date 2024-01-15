@@ -118,8 +118,10 @@
     </section>
  
 <section id="skillsSection">
-    <ul class="skillsList">
-        <li>
+    <button id="toggleSkills">Toggle Skills</button>
+    <div class="skillsListContainer">
+        <ul class="skillsList">
+            <li>
             <h3>HTML</h3>
             <div class="skillBar htmlBar" style="width: 90%;"></div>
         </li>
@@ -139,8 +141,9 @@
             <h3>React</h3>
             <div class="skillBar reactBar" style="width: 35%;"></div>
         </li>
-    </ul>
-</section>    
+        </ul>
+    </div>
+</section>
 <script>
         const darkModeToggle = document.getElementById('darkModeToggle');
         const body = document.body;
@@ -199,10 +202,15 @@
         loadBotpressWebChat();
     </script>
     <script>
- skillsBtn.addEventListener('click', function () {
-    console.log("Button clicked"); // Add this line for debugging
-    skillsSection.style.display = skillsSection.style.display === 'none' ? 'block' : 'none';
-});
+document.addEventListener('DOMContentLoaded', function () {
+    var skillsBtn = document.getElementById('skillsBtn');
+    var toggleSkillsBtn = document.getElementById('toggleSkills');
+    var skillsSection = document.getElementById('skillsSection');
+
+    toggleSkillsBtn.addEventListener('click', function () {
+        var skillsListContainer = document.querySelector('.skillsListContainer');
+        skillsListContainer.style.display = skillsListContainer.style.display === 'none' ? 'block' : 'none';
+    });
     </script>
 </body>
 </html>
