@@ -234,24 +234,8 @@ li a:hover {
     box-shadow: 0 4px 17px rgb(80 80 80 / 31%);
     background: var(--primary-dark);
 }
-
-        #skillsSection {
-            display: none;
-        }
-
-        .skillsList {
-            list-style: none;
-            padding: 0;
-        }
-
-        .skillsList li {
-            margin-bottom: 10px;
-        }
-
-        .skillBar {
-            height: 10px;
-        }
-
+     
+ 
         /* Adicione cores especÃ­ficas conforme sua preferÃªncia */
         .htmlBar { background-color: #3498db; }
         .cssBar { background-color: #3498db; }
