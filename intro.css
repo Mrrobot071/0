@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&family=Roboto:wght@100;300;400&display=swap');
 
 :root {
-    --primary-color: #FF0000;
-    --primary-dark: silver;
+    --primary-color: #red;
+    --primary-dark: #1F252E;
 }
 
 * {
@@ -28,7 +28,7 @@ body {
 header {
     position: relative;
     box-shadow: 0 4px 17px rgba(0, 0, 0, .1);
-    background: white;
+    background: #black;
     position: sticky;
     top: 0;
     z-index: 1;
@@ -49,7 +49,7 @@ header {
 }
 
 .logo a {
-    color: #FF0000;
+    color: #red;
     text-decoration: none;
 }
 
@@ -127,14 +127,6 @@ li a:hover {
     animation: topSideAni 1.5s ease forwards;
 }
 
-
-.main p1 {
-    line-height: 1.7;
-    font-size: 1.2rem;
-    opacity: 0;
-    animation: topSideAni 1.5s ease forwards;
-}
-
 .social {
     display: flex;
     flex-wrap: wrap;
@@ -201,7 +193,7 @@ li a:hover {
 
 .dark-mode {
     background-color: var(--primary-dark);
-    color: white;
+    color: #ffffff;
 }
 
 .mode input {
@@ -234,7 +226,7 @@ li a:hover {
     box-shadow: 0 4px 17px rgb(80 80 80 / 31%);
     background: var(--primary-dark);
 }
-     
+
 /* Animation */
 @keyframes leftSideAni {
     0% {
@@ -286,7 +278,7 @@ li a:hover {
         opacity: 1;
     }
 }
-/* @keyframes ImgAni {
+@keyframes ImgAni {
     0% {
         transform: translateX(0);
     }
@@ -296,7 +288,7 @@ li a:hover {
     100% {
         transform: translateX(0);
     }
-} */
+}
 @keyframes imageAni {
     0% {
         opacity: 0;
@@ -372,4 +364,4 @@ li a:hover {
     .main {
         margin-top: 2rem;
     }
-}
+    }
