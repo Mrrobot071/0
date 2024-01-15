@@ -235,6 +235,30 @@ li a:hover {
     background: var(--primary-dark);
 }
 
+        #skillsSection {
+            display: none;
+        }
+
+        .skillsList {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skillsList li {
+            margin-bottom: 10px;
+        }
+
+        .skillBar {
+            height: 10px;
+        }
+
+        /* Adicione cores especÃ­ficas conforme sua preferÃªncia */
+        .htmlBar { background-color: #3498db; }
+        .cssBar { background-color: #3498db; }
+        .jsBar { background-color: #e74c3c; }
+        .pythonBar { background-color: #e74c3c; }
+        .reactBar { background-color: #e74c3c; }
+
 /* Animation */
 @keyframes leftSideAni {
     0% {
