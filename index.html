@@ -36,6 +36,58 @@
                 <i class='bx bxs-moon'></i>
             </label>
         </div>
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            background-color: #333;
+            padding: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+        }
+
+        #skillsSection {
+            display: none;
+        }
+
+        .skillsList {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skillsList li {
+            margin-bottom: 10px;
+        }
+
+        .skillBar {
+            height: 10px;
+        }
+
+        /* Adicione cores específicas conforme sua preferência */
+        .htmlBar { background-color: #3498db; }
+        .cssBar { background-color: #3498db; }
+        .jsBar { background-color: #e74c3c; }
+        .pythonBar { background-color: #e74c3c; }
+        .reactBar { background-color: #e74c3c; }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var skillsBtn = document.getElementById('skillsBtn');
+            var skillsSection = document.getElementById('skillsSection');
+
+            skillsBtn.addEventListener('click', function () {
+                skillsSection.style.display = skillsSection.style.display === 'none' ? 'block' : 'none';
+            });
+        });
+    </script>
     </header>
     <section class="container">
         <div class="main">
@@ -45,7 +97,9 @@
                 <p> Bem vindo(a) ao meu site portfólio! Aqui você encontrará principais projetos de Lucas, um Web Developer. Explore meus trabalhos, acompanhe minhas redes sociais e descubra mais das minhas habilidades, as quais ao mesmo tempo que se aperfeiçoa, ponho em prática. Prepare-se para se surpreender!</p>
 
 
-<p1>*Qualquer dúvida, não hesite em perguntar ao meu assistente virtual - Jarvis (botão preto no canto inferior direito)
+<p1>
+
+*Qualquer dúvida, não hesite em perguntar ao meu assistente virtual - Jarvis (botão preto no canto inferior direito)
 </p1>
                 <div class="social">
                     <a href="https://www.linkedin.com/in/lucas-nathan-760944229/" style="--socialAni:1"><i class='bx bxl-linkedin'></i></a>
@@ -66,26 +120,27 @@
     <ul class="skillsList">
         <li>
             <h3>HTML</h3>
-            <div class="skillBar htmlBar" style="width: 80%;"></div>
+            <div class="skillBar htmlBar" style="width: 90%;"></div>
         </li>
         <li>
             <h3>CSS</h3>
-            <div class="skillBar cssBar" style="width: 80%;"></div>
+            <div class="skillBar cssBar" style="width: 70%;"></div>
         </li>
         <li>
             <h3>JavaScript</h3>
-            <div class="skillBar jsBar" style="width: 50%;"></div>
+            <div class="skillBar jsBar" style="width: 55%;"></div>
         </li>
         <li>
             <h3>Python</h3>
-            <div class="skillBar pythonBar" style="width: 50%;"></div>
+            <div class="skillBar pythonBar" style="width: 45%;"></div>
         </li>
         <li>
             <h3>React</h3>
-            <div class="skillBar reactBar" style="width: 30%;"></div>
+            <div class="skillBar reactBar" style="width: 35%;"></div>
         </li>
     </ul>
-</section>    <script>
+</section>    
+<script>
         const darkModeToggle = document.getElementById('darkModeToggle');
         const body = document.body;
         const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
