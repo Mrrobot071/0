@@ -118,5 +118,15 @@
         // Chame a função de carregamento do Botpress Web Chat automaticamente
         loadBotpressWebChat();
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var skillsBtn = document.getElementById('skillsBtn');
+            var skillsSection = document.getElementById('skillsSection');
+
+            skillsBtn.addEventListener('click', function () {
+                skillsSection.style.display = skillsSection.style.display === 'none' ? 'block' : 'none';
+            });
+        });
+    </script>
 </body>
 </html>
