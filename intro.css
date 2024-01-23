@@ -278,7 +278,7 @@ li a:hover {
         opacity: 1;
     }
 }
-@keyframes ImgAni {
+/* @keyframes ImgAni {
     0% {
         transform: translateX(0);
     }
@@ -288,7 +288,7 @@ li a:hover {
     100% {
         transform: translateX(0);
     }
-}
+} */
 @keyframes imageAni {
     0% {
         opacity: 0;
@@ -364,4 +364,4 @@ li a:hover {
     .main {
         margin-top: 2rem;
     }
-    }
+}
