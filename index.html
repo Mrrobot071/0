@@ -14,18 +14,28 @@
 
         :root {
             --dark-navy: #0a192f;
+            --light-navy: #112240;
             --medium-gray: #6b7280;
             --neon-blue: #00f7ff;
             --neon-pink: #ff00aa;
             --primary-color: #eb370e;
             --primary-dark: #1F252E;
+            --light-bg: #f8fafc;
+            --light-text: #1e293b;
         }
 
         body {
             font-family: 'Outfit', 'Poppins', sans-serif;
-            transition: background-color 0.5s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            background-color: var(--dark-navy);
+            color: #e2e8f0;
+        }
+
+        body.light-mode {
+            background-color: var(--light-bg);
+            color: var(--light-text);
         }
 
         .neon-text {
@@ -35,10 +45,22 @@
             animation: neonGlow 1.5s ease-in-out infinite alternate;
         }
 
+        .light-mode .neon-text {
+            text-shadow: 0 0 5px #3b82f6,
+                         0 0 10px #3b82f6,
+                         0 0 20px #3b82f6;
+        }
+
         .neon-border {
             box-shadow: 0 0 5px var(--neon-blue),
                        0 0 10px var(--neon-blue),
                        0 0 20px var(--neon-blue);
+        }
+
+        .light-mode .neon-border {
+            box-shadow: 0 0 5px #3b82f6,
+                       0 0 10px #3b82f6,
+                       0 0 20px #3b82f6;
         }
 
         @keyframes neonGlow {
@@ -61,6 +83,10 @@
         .jarvis-btn:hover {
             transform: scale(1.05);
             box-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        .light-mode .jarvis-btn:hover {
+            box-shadow: 0 0 15px #3b82f6;
         }
 
         .chatbot-container {
@@ -90,6 +116,10 @@
             border-right: 3px solid var(--neon-blue);
             white-space: nowrap;
             animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        .light-mode .typewriter {
+            border-right-color: #3b82f6;
         }
 
         @keyframes typing {
@@ -164,34 +194,72 @@
             }
         }
 
-        .dark-mode {
+        /* Dark mode specific styles */
+        .dark-mode-bg {
             background-color: var(--primary-dark);
+        }
+
+        .dark-mode-text {
             color: #ffffff;
         }
 
-        .dark-mode header {
+        .dark-mode-nav {
             box-shadow: 0 4px 17px rgb(80 80 80 / 31%);
             background: var(--primary-dark);
         }
 
-        .dark-mode .social a {
+        .dark-mode-social a {
             color: var(--primary-color);
             border: 1.6px solid var(--primary-color);
         }
 
-        .dark-mode .social a:hover {
+        .dark-mode-social a:hover {
             color: var(--primary-dark);
             background-color: var(--primary-color);
             box-shadow: 0 0 20px var(--primary-color);
         }
 
-        .dark-mode .logo a {
+        .dark-mode-logo a {
             color: #fff;
         }
 
-        .dark-mode .images::before {
+        .dark-mode-images::before {
             background: linear-gradient(145deg, #1f252e, #2e3239);
             box-shadow: 10px 10px 19px #1c1e22, -10px -10px 19px #1b1f27;
+        }
+
+        /* Light mode specific styles */
+        .light-mode-bg {
+            background-color: var(--light-bg);
+        }
+
+        .light-mode-text {
+            color: var(--light-text);
+        }
+
+        .light-mode-nav {
+            box-shadow: 0 4px 17px rgba(0, 0, 0, 0.1);
+            background: #ffffff;
+        }
+
+        .light-mode-social a {
+            color: #3b82f6;
+            border: 1.6px solid #3b82f6;
+        }
+
+        .light-mode-social a:hover {
+            color: #ffffff;
+            background-color: #3b82f6;
+            box-shadow: 0 0 20px #3b82f6;
+        }
+
+        .light-mode-logo a {
+            color: var(--light-text);
+        }
+
+        .light-mode-images::before {
+            background: linear-gradient(145deg, #e2e8f0, #f1f5f9);
+            box-shadow: 10px 10px 19px #d1d5db, -10px -10px 19px #e5e7eb;
         }
 
         .mobile-menu {
@@ -206,11 +274,16 @@
                 display: block;
             }
         }
+
+        /* Smooth transitions for theme changes */
+        .theme-transition {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
     </style>
 </head>
-<body class="bg-[#0a192f] text-gray-300 min-h-screen">
+<body class="theme-transition">
     <!-- Navigation -->
-    <nav class="bg-[#0a192f]/90 backdrop-blur-md fixed w-full z-10 border-b border-[#1e3a8a]">
+    <nav class="bg-[#0a192f]/90 backdrop-blur-md fixed w-full z-10 border-b border-[#1e3a8a] dark-mode-nav theme-transition">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
@@ -218,41 +291,41 @@
                 </div>
                 <div class="hidden md:block desktop-menu">
                     <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:text-[#00f7ff] transition-colors">Home</a>
-                        <a href="https://gamma.app/docs/Mr-Robot-754g7mqxwxus47c?mode=doc" class="px-3 py-2 rounded-md text-sm font-medium hover:text-[#00f7ff] transition-colors">Blog</a>
-                        <a href="https://linktr.ee/mrrobot_t7" class="px-3 py-2 rounded-md text-sm font-medium hover:text-[#00f7ff] transition-colors">Portfolio</a>
-                        <a href="https://wa.me/557192920032" class="px-3 py-2 rounded-md text-sm font-medium hover:text-[#00f7ff] transition-colors">Contact</a>
-                        <a href="https://mrrobot071.github.io/filmes" class="px-3 py-2 rounded-md text-sm font-medium hover:text-[#00f7ff] transition-colors">LukFlix</a>
+                        <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:text-[#00f7ff] dark:hover:text-[#3b82f6] transition-colors">Home</a>
+                        <a href="https://gamma.app/docs/Mr-Robot-754g7mqxwxus47c?mode=doc" class="px-3 py-2 rounded-md text-sm font-medium hover:text-[#00f7ff] dark:hover:text-[#3b82f6] transition-colors">Blog</a>
+                        <a href="https://linktr.ee/mrrobot_t7" class="px-3 py-2 rounded-md text-sm font-medium hover:text-[#00f7ff] dark:hover:text-[#3b82f6] transition-colors">Portfolio</a>
+                        <a href="https://wa.me/557192920032" class="px-3 py-2 rounded-md text-sm font-medium hover:text-[#00f7ff] dark:hover:text-[#3b82f6] transition-colors">Contact</a>
+                        <a href="https://mrrobot071.github.io/filmes" class="px-3 py-2 rounded-md text-sm font-medium hover:text-[#00f7ff] dark:hover:text-[#3b82f6] transition-colors">LukFlix</a>
                     </div>
                 </div>
                 <div class="md:hidden mobile-menu">
-                    <input type="checkbox" id="mobile-menu-toggle">
-                    <label for="mobile-menu-toggle" class="text-gray-300 hover:text-white focus:outline-none">
+                    <input type="checkbox" id="mobile-menu-toggle" class="hidden">
+                    <label for="mobile-menu-toggle" class="text-gray-300 dark:text-gray-700 hover:text-white dark:hover:text-black focus:outline-none cursor-pointer">
                         <i class="fas fa-bars text-2xl"></i>
                     </label>
-                    <div id="mobile-menu" class="hidden absolute top-16 left-0 right-0 bg-[#0a192f] border-t border-[#1e3a8a]">
+                    <div id="mobile-menu" class="hidden absolute top-16 left-0 right-0 bg-[#0a192f] dark:bg-white border-t border-[#1e3a8a] dark:border-gray-200 shadow-lg theme-transition">
                         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] transition-colors">Home</a>
-                            <a href="https://gamma.app/docs/Mr-Robot-754g7mqxwxus47c?mode=doc" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] transition-colors">Blog</a>
-                            <a href="https://linktr.ee/mrrobot_t7" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] transition-colors">Portfolio</a>
-                            <a href="https://wa.me/557192920032" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] transition-colors">Contact</a>
-                            <a href="https://mrrobot071.github.io/filmes" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] transition-colors">LukFlix</a>
-                            <a href="https://gleeful-bublanina-79d4c6.netlify.app/" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] transition-colors">Jarvis</a>
-                            <a href="https://www.mediafire.com/file/59ftdm6ub3d0xsb/Spotify_P.apk/file" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] transition-colors">Spotify</a>
-                            <a href="https://rev-hunter-ssh-ssl-ws.br.uptodown.com/android/download" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] transition-colors">Net Grátis</a>
-                            <a href="https://d.apkpure.net/b/APK/com.wovy.entertainment?version=latest" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] transition-colors">Netflix</a>
-                            <a href="https://d.apkpure.net/b/APK/com.tomatoanimes.app?version=latest" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] transition-colors">Animes</a>
-                            <a href="https://honista.com/pt/download.html" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] transition-colors">Insta Hk</a>
-                            <a href="https://www.mediafire.com/file/e44uq8gvk0aqsn0/Kof-2002-Magic-Plus-2-Apk-v1.1.2.apk/file" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] transition-colors">Kof 2002</a>
-                            <a href="https://apkpure.com/br/igames-mobile/com.tgamesandroid.incompativeis/download" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] transition-colors">iGames PSP</a>
-                            <a href="https://apkpure.com/br/chains-of-ghost-sparta-2-ps2/com.chahal.gow23/download" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] transition-colors">God of War</a>
+                            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] dark:hover:text-[#3b82f6] transition-colors">Home</a>
+                            <a href="https://gamma.app/docs/Mr-Robot-754g7mqxwxus47c?mode=doc" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] dark:hover:text-[#3b82f6] transition-colors">Blog</a>
+                            <a href="https://linktr.ee/mrrobot_t7" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] dark:hover:text-[#3b82f6] transition-colors">Portfolio</a>
+                            <a href="https://wa.me/557192920032" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] dark:hover:text-[#3b82f6] transition-colors">Contact</a>
+                            <a href="https://mrrobot071.github.io/filmes" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] dark:hover:text-[#3b82f6] transition-colors">LukFlix</a>
+                            <a href="https://www.mediafire.com/file/59ftdm6ub3d0xsb/Spotify_P.apk/file" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] dark:hover:text-[#3b82f6] transition-colors">Spotify</a>
+                            <a href="https://rev-hunter-ssh-ssl-ws.br.uptodown.com/android/download" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] dark:hover:text-[#3b82f6] transition-colors">Net Grátis</a>
+                            <a href="https://d.apkpure.net/b/APK/com.wovy.entertainment?version=latest" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] dark:hover:text-[#3b82f6] transition-colors">Netflix</a>
+                            <a href="https://d.apkpure.net/b/APK/com.tomatoanimes.app?version=latest" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] dark:hover:text-[#3b82f6] transition-colors">Animes</a>
+                            <a href="https://honista.com/pt/download.html" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] dark:hover:text-[#3b82f6] transition-colors">Insta Hk</a>
+                            <a href="https://www.mediafire.com/file/e44uq8gvk0aqsn0/Kof-2002-Magic-Plus-2-Apk-v1.1.2.apk/file" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] dark:hover:text-[#3b82f6] transition-colors">Kof 2002</a>
+                            <a href="https://apkpure.com/br/igames-mobile/com.tgamesandroid.incompativeis/download" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] dark:hover:text-[#3b82f6] transition-colors">iGames PSP</a>
+                            <a href="https://apkpure.com/br/chains-of-ghost-sparta-2-ps2/com.chahal.gow23/download" class="block px-3 py-2 rounded-md text-base font-medium hover:text-[#00f7ff] dark:hover:text-[#3b82f6] transition-colors">God of War</a>
                         </div>
                     </div>
                 </div>
                 <div class="mode">
-                    <input type="checkbox" id="darkModeToggle">
-                    <label for="darkModeToggle" class="cursor-pointer">
-                        <i class='bx bxs-moon text-xl'></i>
+                    <input type="checkbox" id="darkModeToggle" class="hidden">
+                    <label for="darkModeToggle" class="cursor-pointer flex items-center">
+                        <i class='bx bxs-moon text-xl text-gray-300 dark:text-gray-700'></i>
+                        <i class='bx bxs-sun text-xl text-gray-300 dark:text-gray-700 ml-2'></i>
                     </label>
                 </div>
             </div>
@@ -267,99 +340,99 @@
                     <span class="neon-text">Hi, I'm</span>
                     <span class="text-[#FF0000] neon-text">Lucas Santos!</span>
                 </h1>
-                <h2 class="text-2xl md:text-3xl font-medium mb-6 text-[#6b7280]">Full Stack Developer</h2>
-                <p class="text-lg mb-8 text-[#9ca3af] max-w-lg">
+                <h2 class="text-2xl md:text-3xl font-medium mb-6 text-[#6b7280] dark:text-gray-500">Full Stack Developer</h2>
+                <p class="text-lg mb-8 text-[#9ca3af] dark:text-gray-600 max-w-lg">
                     Bem-vindo(a) ao meu site principal! Aqui, você encontrará os principais projetos de Lucas (Luk), um desenvolvedor de software em formação. Atualmente, estou cursando Análise e Desenvolvimento de Sistemas (ADS) pela Universidade Salvador (Unifacs), além de oferecer diversos serviços e realizar vendas de produtos digitais.
                 </p>
-                <p class="text-lg mb-8 text-[#9ca3af] max-w-lg">
+                <p class="text-lg mb-8 text-[#9ca3af] dark:text-gray-600 max-w-lg">
                     Acompanhe minhas redes sociais e descubra mais sobre minhas habilidades, que estou constantemente aprimorando e colocando em prática. Prepare-se para se surpreender!
                 </p>
-                <p class="text-lg mb-8 text-[#9ca3af] max-w-lg">
+                <p class="text-lg mb-8 text-[#9ca3af] dark:text-gray-600 max-w-lg">
                     Você encontrará os principais projetos no menu, canto superior direito, listras ao lado da lua (mobile).
                 </p>
-                <p class="text-lg mb-8 text-[#9ca3af] max-w-lg">
+                <p class="text-lg mb-8 text-[#9ca3af] dark:text-gray-600 max-w-lg">
                     ➨ Qualquer dúvida, não hesite em perguntar ao meu assistente virtual – Jarvis (botão preto no canto inferior direito)
                 </p>
                 <div class="social flex space-x-4 mt-6">
-                    <a href="https://www.linkedin.com/in/lucas-nathan-760944229/" class="w-12 h-12 rounded-full bg-[#00f7ff]/10 border border-[#00f7ff] text-[#00f7ff] flex items-center justify-center hover:bg-[#00f7ff]/20 transition-colors">
+                    <a href="https://www.linkedin.com/in/lucas-nathan-760944229/" class="w-12 h-12 rounded-full bg-[#00f7ff]/10 dark:bg-blue-100 border border-[#00f7ff] dark:border-blue-500 text-[#00f7ff] dark:text-blue-500 flex items-center justify-center hover:bg-[#00f7ff]/20 dark:hover:bg-blue-200 transition-colors theme-transition">
                         <i class='bx bxl-linkedin text-xl'></i>
                     </a>
-                    <a href="https://www.instagram.com/k1evil/" class="w-12 h-12 rounded-full bg-[#00f7ff]/10 border border-[#00f7ff] text-[#00f7ff] flex items-center justify-center hover:bg-[#00f7ff]/20 transition-colors">
+                    <a href="https://www.instagram.com/k1evil/" class="w-12 h-12 rounded-full bg-[#00f7ff]/10 dark:bg-blue-100 border border-[#00f7ff] dark:border-blue-500 text-[#00f7ff] dark:text-blue-500 flex items-center justify-center hover:bg-[#00f7ff]/20 dark:hover:bg-blue-200 transition-colors theme-transition">
                         <i class='bx bxl-instagram text-xl'></i>
                     </a>
-                    <a href="https://github.com/Mrrobot071" class="w-12 h-12 rounded-full bg-[#00f7ff]/10 border border-[#00f7ff] text-[#00f7ff] flex items-center justify-center hover:bg-[#00f7ff]/20 transition-colors">
+                    <a href="https://github.com/Mrrobot071" class="w-12 h-12 rounded-full bg-[#00f7ff]/10 dark:bg-blue-100 border border-[#00f7ff] dark:border-blue-500 text-[#00f7ff] dark:text-blue-500 flex items-center justify-center hover:bg-[#00f7ff]/20 dark:hover:bg-blue-200 transition-colors theme-transition">
                         <i class='bx bxl-github text-xl'></i>
                     </a>
-                    <a href="https://www.facebook.com/lucas.coelho.7564129" class="w-12 h-12 rounded-full bg-[#00f7ff]/10 border border-[#00f7ff] text-[#00f7ff] flex items-center justify-center hover:bg-[#00f7ff]/20 transition-colors">
+                    <a href="https://www.facebook.com/lucas.coelho.7564129" class="w-12 h-12 rounded-full bg-[#00f7ff]/10 dark:bg-blue-100 border border-[#00f7ff] dark:border-blue-500 text-[#00f7ff] dark:text-blue-500 flex items-center justify-center hover:bg-[#00f7ff]/20 dark:hover:bg-blue-200 transition-colors theme-transition">
                         <i class='bx bxl-facebook-circle text-xl'></i>
                     </a>
                 </div>
             </div>
             <div class="md:w-1/2 flex justify-center">
-                <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-[#00f7ff] neon-border">
-                    <div class="absolute inset-0 bg-gradient-to-br from-[#00f7ff]/20 to-[#ff00aa]/20"></div>
+                <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-[#00f7ff] dark:border-blue-500 neon-border theme-transition">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[#00f7ff]/20 dark:from-blue-100/30 to-[#ff00aa]/20 dark:to-pink-100/30"></div>
                     <img src="https://avatars.githubusercontent.com/u/131344770?v=4" alt="Profile" class="w-full h-full object-cover relative z-10">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Jarvis Button -->
-    <div class="fixed bottom-8 right-8 z-20">
-        <button id="jarvisBtn" class="jarvis-btn w-16 h-16 rounded-full bg-[#00f7ff]/20 border border-[#00f7ff] text-[#00f7ff] flex items-center justify-center shadow-lg">
-            <i class="fas fa-robot text-2xl"></i>
-        </button>
-    </div>
-
     <!-- Jarvis Chatbot -->
-    <div id="chatbotContainer" class="chatbot-container fixed bottom-24 right-8 w-80 bg-[#1f2937] rounded-lg shadow-xl border border-[#00f7ff]/30 overflow-hidden z-10">
-        <div class="bg-[#111827] p-4 border-b border-[#00f7ff]/20">
-            <h3 class="text-lg font-semibold text-[#00f7ff] flex items-center">
+    <div id="chatbotContainer" class="chatbot-container fixed bottom-24 right-8 w-80 bg-[#1f2937] dark:bg-white rounded-lg shadow-xl border border-[#00f7ff]/30 dark:border-blue-500/30 overflow-hidden z-10 theme-transition">
+        <div class="bg-[#111827] dark:bg-gray-100 p-4 border-b border-[#00f7ff]/20 dark:border-blue-500/20">
+            <h3 class="text-lg font-semibold text-[#00f7ff] dark:text-blue-500 flex items-center">
                 <i class="fas fa-robot mr-2"></i> Jarvis Assistant
             </h3>
         </div>
-        <div id="chatMessages" class="h-[380px] overflow-y-auto p-4 space-y-3">
-            <div class="chat-message bg-[#111827] p-3 rounded-lg text-sm">
+        <div id="chatMessages" class="h-[380px] overflow-y-auto p-4 space-y-3 bg-[#1f2937] dark:bg-white">
+            <div class="chat-message bg-[#111827] dark:bg-gray-100 p-3 rounded-lg text-sm text-white dark:text-gray-800">
                 <p class="typewriter">Hello! I'm Jarvis, your AI assistant. How can I help you today?</p>
             </div>
         </div>
-        <div class="p-3 border-t border-[#00f7ff]/20 bg-[#111827]">
+        <div class="p-3 border-t border-[#00f7ff]/20 dark:border-blue-500/20 bg-[#111827] dark:bg-gray-100">
             <div class="flex">
-                <input type="text" id="userInput" placeholder="Type your message..." class="flex-1 bg-[#1f2937] border border-[#00f7ff]/30 rounded-l-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-[#00f7ff]">
-                <button id="sendBtn" class="bg-[#00f7ff]/20 border border-[#00f7ff]/30 text-[#00f7ff] px-3 py-2 rounded-r-md hover:bg-[#00f7ff]/30 transition-colors">
+                <input type="text" id="userInput" placeholder="Type your message..." class="flex-1 bg-[#1f2937] dark:bg-white border border-[#00f7ff]/30 dark:border-blue-500/30 rounded-l-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-[#00f7ff] dark:focus:ring-blue-500 text-white dark:text-gray-800 placeholder-gray-400 dark:placeholder-gray-500 theme-transition">
+                <button id="sendBtn" class="bg-[#00f7ff]/20 dark:bg-blue-100 border border-[#00f7ff]/30 dark:border-blue-500/30 text-[#00f7ff] dark:text-blue-500 px-3 py-2 rounded-r-md hover:bg-[#00f7ff]/30 dark:hover:bg-blue-200 transition-colors theme-transition">
                     <i class="fas fa-paper-plane"></i>
                 </button>
             </div>
         </div>
     </div>
 
+    <!-- Jarvis Button -->
+    <div class="fixed bottom-8 right-8 z-20">
+        <button id="jarvisBtn" class="jarvis-btn w-16 h-16 rounded-full bg-[#00f7ff]/20 dark:bg-blue-100 border border-[#00f7ff] dark:border-blue-500 text-[#00f7ff] dark:text-blue-500 flex items-center justify-center shadow-lg theme-transition">
+            <i class="fas fa-robot text-2xl"></i>
+        </button>
+    </div>
+
     <!-- About Section -->
-    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-[#1f2937] rounded-xl my-10">
+    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-[#1f2937] dark:bg-gray-100 rounded-xl my-10 theme-transition">
         <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold mb-2 text-[#00f7ff]">About Me</h2>
-            <div class="w-20 h-1 bg-[#00f7ff] mx-auto"></div>
+            <h2 class="text-3xl font-bold mb-2 text-[#00f7ff] dark:text-blue-500">About Me</h2>
+            <div class="w-20 h-1 bg-[#00f7ff] dark:bg-blue-500 mx-auto"></div>
         </div>
         <div class="flex flex-col md:flex-row items-center">
             <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
-                <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-[#00f7ff]/30">
+                <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-[#00f7ff]/30 dark:border-blue-500/30 theme-transition">
                     <img src="https://avatars.githubusercontent.com/u/131344770?v=4" alt="About" class="w-full h-full object-cover">
                 </div>
             </div>
             <div class="md:w-2/3 md:pl-12">
-                <p class="text-lg mb-6 text-[#9ca3af]">
+                <p class="text-lg mb-6 text-[#9ca3af] dark:text-gray-600">
                     I'm a passionate developer currently studying Analysis and Systems Development at Universidade Salvador (Unifacs). My expertise spans across frontend and backend technologies, with a focus on creating seamless user experiences and innovative digital solutions.
                 </p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                    <div class="bg-[#111827] p-4 rounded-lg border border-[#00f7ff]/10">
-                        <h3 class="font-semibold text-[#00f7ff] mb-2">Frontend</h3>
-                        <p class="text-sm text-[#9ca3af]">HTML, CSS, JavaScript, React, Vue, TailwindCSS</p>
+                    <div class="bg-[#111827] dark:bg-gray-200 p-4 rounded-lg border border-[#00f7ff]/10 dark:border-blue-500/10 theme-transition">
+                        <h3 class="font-semibold text-[#00f7ff] dark:text-blue-500 mb-2">Frontend</h3>
+                        <p class="text-sm text-[#9ca3af] dark:text-gray-600">HTML, CSS, JavaScript, React, Vue, TailwindCSS</p>
                     </div>
-                    <div class="bg-[#111827] p-4 rounded-lg border border-[#00f7ff]/10">
-                        <h3 class="font-semibold text-[#00f7ff] mb-2">Backend</h3>
-                        <p class="text-sm text-[#9ca3af]">Node.js, Express, Python, Django, MongoDB</p>
+                    <div class="bg-[#111827] dark:bg-gray-200 p-4 rounded-lg border border-[#00f7ff]/10 dark:border-blue-500/10 theme-transition">
+                        <h3 class="font-semibold text-[#00f7ff] dark:text-blue-500 mb-2">Backend</h3>
+                        <p class="text-sm text-[#9ca3af] dark:text-gray-600">Node.js, Express, Python, Django, MongoDB</p>
                     </div>
                 </div>
-                <button class="bg-transparent border border-[#00f7ff] text-[#00f7ff] px-6 py-2 rounded-md hover:bg-[#00f7ff]/10 transition-colors">
+                <button class="bg-transparent border border-[#00f7ff] dark:border-blue-500 text-[#00f7ff] dark:text-blue-500 px-6 py-2 rounded-md hover:bg-[#00f7ff]/10 dark:hover:bg-blue-100 transition-colors theme-transition">
                     Download Resume
                 </button>
             </div>
@@ -369,100 +442,100 @@
     <!-- Projects Section -->
     <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold mb-2 text-[#00f7ff]">My Projects</h2>
-            <div class="w-20 h-1 bg-[#00f7ff] mx-auto"></div>
+            <h2 class="text-3xl font-bold mb-2 text-[#00f7ff] dark:text-blue-500">My Projects</h2>
+            <div class="w-20 h-1 bg-[#00f7ff] dark:bg-blue-500 mx-auto"></div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Project 1 -->
-            <div class="bg-[#1f2937] rounded-lg overflow-hidden border border-[#00f7ff]/20 hover:border-[#00f7ff]/50 transition-colors group">
+            <div class="bg-[#1f2937] dark:bg-gray-100 rounded-lg overflow-hidden border border-[#00f7ff]/20 dark:border-blue-500/20 hover:border-[#00f7ff]/50 dark:hover:border-blue-500/50 transition-colors group theme-transition">
                 <div class="h-48 overflow-hidden">
                     <img src="https://via.placeholder.com/600x400" alt="Project 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2 text-white">LukFlix</h3>
-                    <p class="text-[#9ca3af] mb-4">A streaming platform for movies and series.</p>
+                    <h3 class="text-xl font-semibold mb-2 text-white dark:text-gray-800">LukFlix</h3>
+                    <p class="text-[#9ca3af] dark:text-gray-600 mb-4">A streaming platform for movies and series.</p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-[#00f7ff]/10 text-[#00f7ff] px-2 py-1 rounded">HTML</span>
-                        <span class="text-xs bg-[#00f7ff]/10 text-[#00f7ff] px-2 py-1 rounded">CSS</span>
-                        <span class="text-xs bg-[#00f7ff]/10 text-[#00f7ff] px-2 py-1 rounded">JavaScript</span>
+                        <span class="text-xs bg-[#00f7ff]/10 dark:bg-blue-100 text-[#00f7ff] dark:text-blue-500 px-2 py-1 rounded">HTML</span>
+                        <span class="text-xs bg-[#00f7ff]/10 dark:bg-blue-100 text-[#00f7ff] dark:text-blue-500 px-2 py-1 rounded">CSS</span>
+                        <span class="text-xs bg-[#00f7ff]/10 dark:bg-blue-100 text-[#00f7ff] dark:text-blue-500 px-2 py-1 rounded">JavaScript</span>
                     </div>
-                    <a href="https://mrrobot071.github.io/filmes" class="mt-4 inline-block text-[#00f7ff] hover:underline">View Project</a>
+                    <a href="https://mrrobot071.github.io/filmes" class="mt-4 inline-block text-[#00f7ff] dark:text-blue-500 hover:underline">View Project</a>
                 </div>
             </div>
-                        
+
             <!-- Project 2 -->
-            <div class="bg-[#1f2937] rounded-lg overflow-hidden border border-[#00f7ff]/20 hover:border-[#00f7ff]/50 transition-colors group">
+            <div class="bg-[#1f2937] dark:bg-gray-100 rounded-lg overflow-hidden border border-[#00f7ff]/20 dark:border-blue-500/20 hover:border-[#00f7ff]/50 dark:hover:border-blue-500/50 transition-colors group theme-transition">
                 <div class="h-48 overflow-hidden">
                     <img src="https://via.placeholder.com/600x400" alt="Project 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2 text-white">Jarvis AI</h3>
-                    <p class="text-[#9ca3af] mb-4">An intelligent conversational AI assistant.</p>
+                    <h3 class="text-xl font-semibold mb-2 text-white dark:text-gray-800">Jarvis AI</h3>
+                    <p class="text-[#9ca3af] dark:text-gray-600 mb-4">An intelligent conversational AI assistant.</p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-[#00f7ff]/10 text-[#00f7ff] px-2 py-1 rounded">AI</span>
-                        <span class="text-xs bg-[#00f7ff]/10 text-[#00f7ff] px-2 py-1 rounded">Chatbot</span>
-                        <span class="text-xs bg-[#00f7ff]/10 text-[#00f7ff] px-2 py-1 rounded">JavaScript</span>
+                        <span class="text-xs bg-[#00f7ff]/10 dark:bg-blue-100 text-[#00f7ff] dark:text-blue-500 px-2 py-1 rounded">AI</span>
+                        <span class="text-xs bg-[#00f7ff]/10 dark:bg-blue-100 text-[#00f7ff] dark:text-blue-500 px-2 py-1 rounded">Chatbot</span>
+                        <span class="text-xs bg-[#00f7ff]/10 dark:bg-blue-100 text-[#00f7ff] dark:text-blue-500 px-2 py-1 rounded">JavaScript</span>
                     </div>
-                    <a href="https://gleeful-bublanina-79d4c6.netlify.app/" class="mt-4 inline-block text-[#00f7ff] hover:underline">View Project</a>
+                    <a href="https://gleeful-bublanina-79d4c6.netlify.app/" class="mt-4 inline-block text-[#00f7ff] dark:text-blue-500 hover:underline">View Project</a>
                 </div>
             </div>
-                        
+
             <!-- Project 3 -->
-            <div class="bg-[#1f2937] rounded-lg overflow-hidden border border-[#00f7ff]/20 hover:border-[#00f7ff]/50 transition-colors group">
+            <div class="bg-[#1f2937] dark:bg-gray-100 rounded-lg overflow-hidden border border-[#00f7ff]/20 dark:border-blue-500/20 hover:border-[#00f7ff]/50 dark:hover:border-blue-500/50 transition-colors group theme-transition">
                 <div class="h-48 overflow-hidden">
                     <img src="https://via.placeholder.com/600x400" alt="Project 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="p-6">
-                    <h3 class="text-xl font-semibold mb-2 text-white">Portfolio Hub</h3>
-                    <p class="text-[#9ca3af] mb-4">A central hub for all my projects and links.</p>
+                    <h3 class="text-xl font-semibold mb-2 text-white dark:text-gray-800">Portfolio Hub</h3>
+                    <p class="text-[#9ca3af] dark:text-gray-600 mb-4">A central hub for all my projects and links.</p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-[#00f7ff]/10 text-[#00f7ff] px-2 py-1 rounded">HTML</span>
-                        <span class="text-xs bg-[#00f7ff]/10 text-[#00f7ff] px-2 py-1 rounded">CSS</span>
-                        <span class="text-xs bg-[#00f7ff]/10 text-[#00f7ff] px-2 py-1 rounded">JavaScript</span>
+                        <span class="text-xs bg-[#00f7ff]/10 dark:bg-blue-100 text-[#00f7ff] dark:text-blue-500 px-2 py-1 rounded">HTML</span>
+                        <span class="text-xs bg-[#00f7ff]/10 dark:bg-blue-100 text-[#00f7ff] dark:text-blue-500 px-2 py-1 rounded">CSS</span>
+                        <span class="text-xs bg-[#00f7ff]/10 dark:bg-blue-100 text-[#00f7ff] dark:text-blue-500 px-2 py-1 rounded">JavaScript</span>
                     </div>
-                    <a href="https://linktr.ee/mrrobot_t7" class="mt-4 inline-block text-[#00f7ff] hover:underline">View Project</a>
+                    <a href="https://linktr.ee/mrrobot_t7" class="mt-4 inline-block text-[#00f7ff] dark:text-blue-500 hover:underline">View Project</a>
                 </div>
             </div>
         </div>
         <div class="text-center mt-12">
-            <a href="https://linktr.ee/mrrobot_t7" class="bg-transparent border border-[#00f7ff] text-[#00f7ff] px-8 py-3 rounded-md hover:bg-[#00f7ff]/10 transition-colors inline-block">
+            <a href="https://linktr.ee/mrrobot_t7" class="bg-transparent border border-[#00f7ff] dark:border-blue-500 text-[#00f7ff] dark:text-blue-500 px-8 py-3 rounded-md hover:bg-[#00f7ff]/10 dark:hover:bg-blue-100 transition-colors inline-block theme-transition">
                 View All Projects
             </a>
         </div>
     </section>
-    
+
     <!-- Contact Form -->
-    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-[#1f2937] rounded-xl my-10">
+    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-[#1f2937] dark:bg-gray-100 rounded-xl my-10 theme-transition">
         <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold mb-2 text-[#00f7ff]">Contact Me</h2>
-            <div class="w-20 h-1 bg-[#00f7ff] mx-auto"></div>
+            <h2 class="text-3xl font-bold mb-2 text-[#00f7ff] dark:text-blue-500">Contact Me</h2>
+            <div class="w-20 h-1 bg-[#00f7ff] dark:bg-blue-500 mx-auto"></div>
         </div>
         <form id="contact-form" class="space-y-6 max-w-2xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                    <label for="name" class="block text-sm font-medium text-[#9ca3af] mb-1">Name</label>
+                    <label for="name" class="block text-sm font-medium text-[#9ca3af] dark:text-gray-600 mb-1">Name</label>
                     <input type="text" id="name" name="name" required
-                        class="w-full bg-[#111827] border border-[#00f7ff]/30 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-1 focus:ring-[#00f7ff]">
+                        class="w-full bg-[#111827] dark:bg-gray-200 border border-[#00f7ff]/30 dark:border-blue-500/30 rounded-md px-4 py-2 text-white dark:text-gray-800 focus:outline-none focus:ring-1 focus:ring-[#00f7ff] dark:focus:ring-blue-500 theme-transition">
                 </div>
                 <div>
-                    <label for="email" class="block text-sm font-medium text-[#9ca3af] mb-1">Email</label>
+                    <label for="email" class="block text-sm font-medium text-[#9ca3af] dark:text-gray-600 mb-1">Email</label>
                     <input type="email" id="email" name="email" required
-                        class="w-full bg-[#111827] border border-[#00f7ff]/30 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-1 focus:ring-[#00f7ff]">
+                        class="w-full bg-[#111827] dark:bg-gray-200 border border-[#00f7ff]/30 dark:border-blue-500/30 rounded-md px-4 py-2 text-white dark:text-gray-800 focus:outline-none focus:ring-1 focus:ring-[#00f7ff] dark:focus:ring-blue-500 theme-transition">
                 </div>
             </div>
             <div>
-                <label for="subject" class="block text-sm font-medium text-[#9ca3af] mb-1">Subject</label>
+                <label for="subject" class="block text-sm font-medium text-[#9ca3af] dark:text-gray-600 mb-1">Subject</label>
                 <input type="text" id="subject" name="subject"
-                    class="w-full bg-[#111827] border border-[#00f7ff]/30 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-1 focus:ring-[#00f7ff]">
+                    class="w-full bg-[#111827] dark:bg-gray-200 border border-[#00f7ff]/30 dark:border-blue-500/30 rounded-md px-4 py-2 text-white dark:text-gray-800 focus:outline-none focus:ring-1 focus:ring-[#00f7ff] dark:focus:ring-blue-500 theme-transition">
             </div>
             <div>
-                <label for="message" class="block text-sm font-medium text-[#9ca3af] mb-1">Message</label>
+                <label for="message" class="block text-sm font-medium text-[#9ca3af] dark:text-gray-600 mb-1">Message</label>
                 <textarea id="message" name="message" rows="5" required
-                    class="w-full bg-[#111827] border border-[#00f7ff]/30 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-1 focus:ring-[#00f7ff]"></textarea>
+                    class="w-full bg-[#111827] dark:bg-gray-200 border border-[#00f7ff]/30 dark:border-blue-500/30 rounded-md px-4 py-2 text-white dark:text-gray-800 focus:outline-none focus:ring-1 focus:ring-[#00f7ff] dark:focus:ring-blue-500 theme-transition"></textarea>
             </div>
             <div class="text-center">
                 <button type="submit"
-                    class="bg-[#00f7ff]/10 border border-[#00f7ff] text-[#00f7ff] px-8 py-3 rounded-md hover:bg-[#00f7ff]/20 transition-colors">
+                    class="bg-[#00f7ff]/10 dark:bg-blue-100 border border-[#00f7ff] dark:border-blue-500 text-[#00f7ff] dark:text-blue-500 px-8 py-3 rounded-md hover:bg-[#00f7ff]/20 dark:hover:bg-blue-200 transition-colors theme-transition">
                     Send Message
                 </button>
             </div>
@@ -470,27 +543,27 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#0a192f] py-12 px-4 sm:px-6 lg:px-8 border-t border-[#1e3a8a]">
+    <footer class="bg-[#0a192f] dark:bg-white py-12 px-4 sm:px-6 lg:px-8 border-t border-[#1e3a8a] dark:border-gray-200 theme-transition">
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
                     <span class="text-xl font-bold neon-text">DEV'LUK</span>
                 </div>
                 <div class="flex space-x-6 mb-6 md:mb-0">
-                    <a href="https://www.linkedin.com/in/lucas-nathan-760944229/" class="text-[#9ca3af] hover:text-[#00f7ff] transition-colors">
+                    <a href="https://www.linkedin.com/in/lucas-nathan-760944229/" class="text-[#9ca3af] dark:text-gray-600 hover:text-[#00f7ff] dark:hover:text-blue-500 transition-colors">
                         <i class="fab fa-linkedin text-2xl"></i>
                     </a>
-                    <a href="https://www.instagram.com/k1evil/" class="text-[#9ca3af] hover:text-[#00f7ff] transition-colors">
+                    <a href="https://www.instagram.com/k1evil/" class="text-[#9ca3af] dark:text-gray-600 hover:text-[#00f7ff] dark:hover:text-blue-500 transition-colors">
                         <i class="fab fa-instagram text-2xl"></i>
                     </a>
-                    <a href="https://github.com/Mrrobot071" class="text-[#9ca3af] hover:text-[#00f7ff] transition-colors">
+                    <a href="https://github.com/Mrrobot071" class="text-[#9ca3af] dark:text-gray-600 hover:text-[#00f7ff] dark:hover:text-blue-500 transition-colors">
                         <i class="fab fa-github text-2xl"></i>
                     </a>
-                    <a href="https://www.facebook.com/lucas.coelho.7564129" class="text-[#9ca3af] hover:text-[#00f7ff] transition-colors">
+                    <a href="https://www.facebook.com/lucas.coelho.7564129" class="text-[#9ca3af] dark:text-gray-600 hover:text-[#00f7ff] dark:hover:text-blue-500 transition-colors">
                         <i class="fab fa-facebook text-2xl"></i>
                     </a>
                 </div>
-                <div class="text-[#9ca3af] text-sm">
+                <div class="text-[#9ca3af] dark:text-gray-600 text-sm">
                     © 2023 Lucas Santos. All rights reserved.
                 </div>
             </div>
@@ -515,16 +588,16 @@
             // Dark mode toggle
             const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
             if (isDarkMode) {
-                body.classList.add('dark-mode');
+                body.classList.add('light-mode');
                 darkModeToggle.checked = true;
             }
 
             darkModeToggle.addEventListener('change', () => {
                 if (darkModeToggle.checked) {
-                    body.classList.add('dark-mode');
+                    body.classList.add('light-mode');
                     localStorage.setItem('darkMode', 'enabled');
                 } else {
-                    body.classList.remove('dark-mode');
+                    body.classList.remove('light-mode');
                     localStorage.setItem('darkMode', 'disabled');
                 }
             });
@@ -586,16 +659,16 @@
                 if (sender === 'user') {
                     messageDiv.innerHTML = `
                         <div class="flex justify-end">
-                            <div class="bg-[#00f7ff]/10 border border-[#00f7ff]/30 p-3 rounded-lg max-w-xs">
-                                <p>${text}</p>
+                            <div class="bg-[#00f7ff]/10 dark:bg-blue-100 border border-[#00f7ff]/30 dark:border-blue-500/30 p-3 rounded-lg max-w-xs">
+                                <p class="text-white dark:text-gray-800">${text}</p>
                             </div>
                         </div>
                     `;
                 } else {
                     messageDiv.innerHTML = `
                         <div class="flex justify-start">
-                            <div class="bg-[#111827] p-3 rounded-lg max-w-xs">
-                                <p>${text}</p>
+                            <div class="bg-[#111827] dark:bg-gray-200 p-3 rounded-lg max-w-xs">
+                                <p class="text-white dark:text-gray-800">${text}</p>
                             </div>
                         </div>
                     `;
