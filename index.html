@@ -15,6 +15,7 @@
             overflow: hidden;
             filter: drop-shadow(0 0 10px #00fff7);
             animation: pulseNeon 2.5s infinite alternate;
+            z-index: 2;
         }
 
         img {
@@ -22,7 +23,8 @@
             height: 300px;
             object-fit: cover;
             border-radius: 20px;
-            animation: floatExpand 5s ease-in-out infinite;
+            animation: floatExpand 6s ease-in-out infinite;
+            z-index: 1;
         }
 
         @keyframes floatExpand {
