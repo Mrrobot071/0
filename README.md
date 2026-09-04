@@ -6,8 +6,7 @@ O site apresenta experiência em desenvolvimento web e de sistemas, automação 
 
 ## Acesso
 
-- Site: https://lukdev.site
-- Currículo: [Curriculo0126.pdf](Curriculo0126.pdf)
-- Currículo atualizado: [Lucas Nathan Currículo.pdf](Lucas%20Nathan%20Curr%C3%ADculo.pdf)
-- GitHub: https://github.com/Mrrobot071
-- LinkedIn: https://www.linkedin.com/in/lucas-nathan-760944229/
+- Site: [https://lukdev.site](https://lukdev.site)
+- Currículo: [Lucas Nathan Currículo.pdf](Lucas%20Nathan%20Curr%C3%ADculo.pdf)
+- GitHub: [https://github.com/Mrrobot071](https://github.com/Mrrobot071)
+- LinkedIn: [https://www.linkedin.com/in/lucas-nathan-760944229/](https://www.linkedin.com/in/lucas-nathan-760944229/)
